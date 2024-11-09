@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja de Coxinhas Gourmet com Localização</title>
+    <title>Loja de Coxinhas Gourmet com Estoque</title>
     <style>
         /* Estilos básicos */
         body {
@@ -107,10 +107,19 @@
 <script>
     let total = 0;
     let coxinhasTotal = 0;
+    let estoqueAtual = 60; // Quantidade total de coxinhas em estoque
 
     function adicionarAoCarrinho(preco, quantidade) {
+        quantidade = parseInt(quantidade);
+        
+        if (quantidade > estoqueAtual) {
+            alert("Não temos estoque suficiente para a quantidade solicitada.");
+            return;
+        }
+
         total += preco * quantidade;
-        coxinhasTotal += parseInt(quantidade);
+        coxinhasTotal += quantidade;
+        estoqueAtual -= quantidade; // Reduz o estoque atual
         document.getElementById("total").textContent = total.toFixed(2);
     }
 
@@ -122,7 +131,7 @@
                         const latitude = posicao.coords.latitude;
                         const longitude = posicao.coords.longitude;
                         
-                        const numeroDono = "559181375639"; // Número do dono com código do país
+                        const numeroDono = "5511999999999"; // Número do dono com código do país
                         const mensagem = `Olá José, eu quero ${coxinhasTotal} coxinhas, total a pagar: R$ ${total.toFixed(2)}. Minha localização: https://www.google.com/maps?q=${latitude},${longitude}`;
                         
                         const urlWhatsApp = `https://wa.me/${numeroDono}?text=${encodeURIComponent(mensagem)}`;
@@ -146,4 +155,4 @@
 </script>
 
 </body>
-  </html>
+                </html>
