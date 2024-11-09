@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja de Coxinhas Gourmet com Estoque</title>
+    <title>Loja de Coxinhas Gourmet com Localização e Estoque</title>
     <style>
         /* Estilos básicos */
         body {
@@ -119,7 +119,7 @@
 
         total += preco * quantidade;
         coxinhasTotal += quantidade;
-        estoqueAtual -= quantidade; // Reduz o estoque atual
+        estoqueAtual -= quantidade; // Reduz o estoque disponível
         document.getElementById("total").textContent = total.toFixed(2);
     }
 
@@ -155,4 +155,4 @@
 </script>
 
 </body>
-                </html>
+</html>
