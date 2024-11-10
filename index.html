@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja de Coxinhas Gourmet com Localização e Estoque</title>
+    <title>COXINHA DA ANY</title>
     <style>
         /* Estilos básicos */
         body {
@@ -19,7 +19,7 @@
         .container {
             max-width: 900px;
             padding: 20px;
-            background: #fff;
+            background: #fffefe;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             text-align: center;
@@ -27,7 +27,11 @@
 
         .titulo {
             font-size: 2em;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            background-color: #9d9b9b;
+            color: #ffffff;
+            font: arial;
+            border-radius: 30px;
         }
 
         .produtos {
@@ -39,11 +43,13 @@
 
         .produto {
             flex: 1 1 calc(45% - 10px);
-            padding: 15px;
-            border-radius: 8px;
+            padding: 30px;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
             text-align: center;
         }
+        
+
 
         .produto img {
             width: 100px;
@@ -54,41 +60,42 @@
 
         .btn, .btn-finalizar {
             padding: 10px 20px;
-            background-color: #3498db;
+            background-color: #34dadb;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 30px;
             cursor: pointer;
             margin-top: 10px;
         }
 
         .btn:hover, .btn-finalizar:hover {
-            background-color: #2980b9;
+            background-color: #34dadbff;
         }
 
         .total-container {
             margin-top: 20px;
+            font-family: Arial;
             font-size: 1.2em;
         }
 
         .total-container span {
             font-weight: bold;
-            color: #e67e22;
+            color: #34dadbff;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1 class="titulo">Coxinha da Any</h1>
+    <h1 class="titulo">COXINHA DA ANY</h1>
     <div class="produtos">
         <!-- Coxinhas -->
         <div class="produto">
-            <img src="https://via.placeholder.com/100?text=Coxinha+Clássica" alt="Coxinha Clássica">
+            <img src="https://storage.random-apis.shop/uploads/1731260833877.png" alt="Coxinha Clássica">
             <h3>Coxinha Clássica</h3>
             <p>R$ 1,0</p>
-            <input type="number" class="quantidade" value="1" min="1">
-            <button class="btn" onclick="adicionarAoCarrinho('Coxinha Clássica', 1, this.previousElementSibling.value)">Adicionar</button>
+            <input type="number" class="quantidade" value=" " min="1">
+            <button class="btn" onclick="adicionarAoCarrinho('Coxinha Clássica', 1, this.previousElementSibling.value)">ADICIONAR</button>
         </div>
         
         <div class="produto">
@@ -96,7 +103,7 @@
             <h3>Coxinha Vegana</h3>
             <p>R$ 1,0</p>
             <input type="number" class="quantidade" value="1" min="1">
-            <button class="btn" onclick="adicionarAoCarrinho('Coxinha Vegana', 1, this.previousElementSibling.value)">Adicionar</button>
+            <button class="btn" onclick="adicionarAoCarrinho('Coxinha Vegana', 1, this.previousElementSibling.value)">ADICIONAR</button>
         </div>
 
         <div class="produto">
@@ -104,7 +111,7 @@
             <h3>Coxinha de Carne</h3>
             <p>R$ 1,0</p>
             <input type="number" class="quantidade" value="1" min="1">
-            <button class="btn" onclick="adicionarAoCarrinho('Coxinha de Carne', 1, this.previousElementSibling.value)">Adicionar</button>
+            <button class="btn" onclick="adicionarAoCarrinho('Coxinha de Carne', 1, this.previousElementSibling.value)">ADICIONAR</button>
         </div>
 
         <div class="produto">
@@ -112,7 +119,7 @@
             <h3>Coxinha Queijo com Presunto</h3>
             <p>R$ 1,0</p>
             <input type="number" class="quantidade" value="1" min="1">
-            <button class="btn" onclick="adicionarAoCarrinho('Coxinha Queijo com Presunto', 1, this.previousElementSibling.value)">Adicionar</button>
+            <button class="btn" onclick="adicionarAoCarrinho('Coxinha Queijo com Presunto', 1, this.previousElementSibling.value)">ADICIONAR</button>
         </div>
 
         <div class="produto">
@@ -120,12 +127,12 @@
             <h3>Coxinha de Frango</h3>
             <p>R$ 1,0</p>
             <input type="number" class="quantidade" value="1" min="1">
-            <button class="btn" onclick="adicionarAoCarrinho('Coxinha de Frango', 1, this.previousElementSibling.value)">Adicionar</button>
+            <button class="btn" onclick="adicionarAoCarrinho('Coxinha de Frango', 1, this.previousElementSibling.value)">ADICIONAR</button>
         </div>
     </div>
     
     <div class="total-container">
-        Total: R$ <span id="total">0.00</span>
+        TOTAL: R$ <span id="total">0.00</span>
     </div>
     <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
 </div>
@@ -177,6 +184,8 @@
                         
                         const urlWhatsApp = `https://wa.me/${numeroDono}?text=${encodeURIComponent(mensagem)}`;
                         window.open(urlWhatsApp, '_blank');
+                        
+           
                         
                         // Reseta o carrinho
                         total = 0;
