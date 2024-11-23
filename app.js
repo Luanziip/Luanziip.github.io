@@ -16,7 +16,7 @@ async function generateImage() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer org-LVH4Maj8OnZHkfcX4QIiqAKt`, // Substitua pela sua chave API
+        'Authorization': `Bearer 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`, // Substitua pela sua chave API
       },
       body: JSON.stringify({
         prompt: prompt,
