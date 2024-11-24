@@ -1,5 +1,5 @@
 const axios = require('axios');
-const apiKey = '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';  // Substitua pela sua chave nova
+const apiKey = 'sk-svcacct-wI_ovLUguauDwc6nwrm1sUFMPn5Rlnc3hSJLo86JtHNzixSaetZCj2gADWhoT3BlbkFJWFKbP8A2X_6dXPnjTSaq4K7Xkz768J5mBlScEb_yb_DAqMaKaaOHapHWw7cA';  // Substitua pela sua chave nova
 
 async function gerarImagem() {
   try {
