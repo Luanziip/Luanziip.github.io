@@ -27,7 +27,7 @@ function sendMessage(){
             Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-            model: "text-davinci-003",
+            model: "gpt-4o",
             prompt: message.value,
             max_tokens: 2048, // tamanho da resposta
             temperature: 0.5 // criatividade na resposta
