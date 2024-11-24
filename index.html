@@ -2,34 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Image Generator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
-    }
-    input, button {
-      margin: 10px;
-      padding: 10px;
-      font-size: 16px;
-    }
-    img {
-      margin-top: 20px;
-      max-width: 100%;
-      border: 1px solid #ccc;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <title>Perguntas e respostas - CHATGPT</title>
 </head>
 <body>
-  <h1>AI Image Generator</h1>
-  <p>Descreva a imagem que você quer criar:</p>
-  <input type="text" id="prompt" placeholder="Ex: Uma cidade futurista ao pôr do sol">
-  <button onclick="generateImage()">Gerar Imagem</button>
-  <div>
-    <img id="resultImage" alt="A imagem gerada aparecerá aqui">
+  <div class="box-questions">
+    <div class="header">
+      <p>Perguntas e respostas - CHATGPT</p>
+    </div>
+    <p id="status"></p>
+    <div id="history">
+      <!-- Aqui vai o chat gerado conforme as respostas -->
+    </div>
+    <div class="footer">
+      <input type="text" id="message-input" placeholder="Pergunte aqui...">
+      <button class="btn-submit" id="btn-submit" onclick="sendMessage()">Enviar</button>
+    </div>
   </div>
-  <script src="app.js"></script>
 </body>
+<script src="main.js"></script>
 </html>
