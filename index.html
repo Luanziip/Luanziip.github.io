@@ -1,26 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Perguntas e respostas - CHATGPT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta CEP - ViaCEP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            width: 360px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .result p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .result p strong {
+            color: #333;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <div class="box-questions">
-    <div class="header">
-      <p>Perguntas e respostas - CHATGPT</p>
+    <div class="container">
+        <h1>Consulta CEP</h1>
+        <input type="text" id="cep" placeholder="Digite o CEP" maxlength="8">
+        <button onclick="buscarCep()">Consultar</button>
+        <div id="resultado" class="result"></div>
+        <footer>
+            Dados fornecidos por <a href="https://viacep.com.br" target="_blank">ViaCEP</a>
+        </footer>
     </div>
-    <p id="status"></p>
-    <div id="history">
-      <!-- Aqui vai o chat gerado conforme as respostas -->
-    </div>
-    <div class="footer">
-      <input type="text" id="message-input" placeholder="Pergunte aqui...">
-      <button class="btn-submit" id="btn-submit" onclick="sendMessage()">Enviar</button>
-    </div>
-  </div>
+
+    <script>
+        async function buscarCep() {
+            const cep = document.getElementById('cep').value.trim();
+            const resultado = document.getElementById('resultado');
+
+            // Limpa o campo de resultado
+            resultado.innerHTML = "";
+
+            // Verifica se o CEP tem 8 dígitos e é numérico
+            if (cep.length !== 8 || isNaN(cep)) {
+                resultado.innerHTML = "<p>Por favor, digite um CEP válido (8 dígitos).</p>";
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                const data = await response.json();
+
+                if (data.erro) {
+                    resultado.innerHTML = "<p>CEP não encontrado.</p>";
+                } else {
+                    resultado.innerHTML = `
+                        <p><strong>Logradouro:</strong> ${data.logradouro || "Não disponível"}</p>
+                        <p><strong>Bairro:</strong> ${data.bairro || "Não disponível"}</p>
+                        <p><strong>Cidade:</strong> ${data.localidade || "Não disponível"}</p>
+                        <p><strong>Estado:</strong> ${data.uf || "Não disponível"}</p>
+                    `;
+                }
+            } catch (error) {
+                resultado.innerHTML = "<p>Erro ao consultar o CEP. Tente novamente mais tarde.</p>";
+            }
+        }
+    </script>
 </body>
-<script src="main.js"></script>
 </html>
